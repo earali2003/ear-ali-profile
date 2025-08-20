@@ -19,7 +19,7 @@ const Hero = () => {
               <div className="absolute inset-0 profile-background rounded-full transform scale-110 blur-sm opacity-60"></div>
               <div className="relative w-72 h-72 lg:w-80 lg:h-80">
                 <img
-                  src={profilePhoto}
+                  src={https://shrturl.app/o2dGVT}
                   alt="Ear Ali - Content Creator and Productivity Expert"
                   className="w-full h-full object-cover rounded-full shadow-2xl border-4 border-white"
                 />
