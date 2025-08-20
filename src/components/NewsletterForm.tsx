@@ -93,7 +93,7 @@ const NewsletterForm = () => {
         
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-semibold"
+          className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-semibold rounded-2xl py-3 transition-all duration-300 shadow-lg hover:shadow-xl"
           disabled={isLoading}
         >
           {isLoading ? "Subscribing..." : "Subscribe"}

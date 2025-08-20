@@ -8,58 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 225 7% 15%;
+    /* Light cream/ivory background */
+    --background: 45 35% 97%;
+    --foreground: 225 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 225 7% 15%;
+    --card-foreground: 225 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 225 7% 15%;
+    --popover-foreground: 225 15% 25%;
 
-    /* Primary Accent - Light Orange/Peach */
-    --primary: 25 95% 70%;
+    /* Primary Accent - Warm Orange */
+    --primary: 30 90% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 25 95% 65%;
+    --primary-hover: 30 90% 60%;
 
     /* Secondary Accent - Soft Yellow */
-    --secondary: 48 100% 88%;
-    --secondary-foreground: 225 7% 15%;
+    --secondary: 48 85% 80%;
+    --secondary-foreground: 225 15% 25%;
 
     /* Highlight Accent - Light Blue */
-    --highlight: 200 100% 80%;
-    --highlight-foreground: 225 7% 15%;
+    --highlight: 200 85% 75%;
+    --highlight-foreground: 225 15% 25%;
 
-    --muted: 220 13% 95%;
-    --muted-foreground: 225 7% 45%;
+    /* Soft pastels for backgrounds */
+    --muted: 45 25% 94%;
+    --muted-foreground: 225 10% 55%;
 
-    --accent: 220 13% 91%;
-    --accent-foreground: 225 7% 15%;
+    --accent: 45 20% 92%;
+    --accent-foreground: 225 15% 25%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 25 95% 70%;
+    --border: 45 15% 88%;
+    --input: 45 15% 90%;
+    --ring: 30 90% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 45 30% 95%;
+    --sidebar-foreground: 225 15% 25%;
+    --sidebar-primary: 30 90% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 20% 92%;
+    --sidebar-accent-foreground: 225 15% 25%;
+    --sidebar-border: 45 15% 88%;
+    --sidebar-ring: 30 90% 65%;
   }
 
   .dark {
@@ -115,6 +110,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
   }
 
   /* Custom scroll bar */
@@ -137,7 +137,7 @@ All colors MUST be HSL.
 
 @layer components {
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--highlight)) 100%);
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--highlight)) 50%, hsl(var(--background)) 100%);
   }
   
   .card-hover {
@@ -153,5 +153,9 @@ All colors MUST be HSL.
   
   .underline-effect {
     @apply relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-highlight after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .profile-background {
+    background: radial-gradient(circle at center, hsl(var(--secondary)) 0%, hsl(var(--highlight)) 70%);
   }
 }
