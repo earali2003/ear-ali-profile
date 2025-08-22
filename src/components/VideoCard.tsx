@@ -44,7 +44,7 @@ const VideoCard = ({ title, description, thumbnail, url, index }: VideoCardProps
           {description}
         </p>
         <a
-          href={url}
+          href="https://www.youtube.com/watch?v=EOJLByHns3s"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-primary hover:text-primary-hover font-medium transition-colors duration-300"
