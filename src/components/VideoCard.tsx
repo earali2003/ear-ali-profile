@@ -18,15 +18,7 @@ const VideoCard = ({ title, description, thumbnail, url, index }: VideoCardProps
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="relative">
-        <img
-          import { useState } from "react";
-
-export default function YoutubeVideo() {
-  const [play, setPlay] = useState(false);
-
-  return (
-    <div className="relative w-full max-w-2xl mx-auto aspect-video">
+      <div className="relative w-full max-w-xl mx-auto aspect-video">
       {play ? (
         <iframe
           className="w-full h-full rounded-2xl"
@@ -41,7 +33,7 @@ export default function YoutubeVideo() {
           className="relative w-full h-full cursor-pointer group"
           onClick={() => setPlay(true)}
         >
-          {/* Thumbnail */}
+          {/* Thumbnail Image */}
           <img
             src="https://img.youtube.com/vi/EOJLByHns3s/hqdefault.jpg"
             alt="Video thumbnail"
@@ -51,7 +43,7 @@ export default function YoutubeVideo() {
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 rounded-2xl flex items-center justify-center">
             {/* Play Button */}
-            <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
               <svg
                 className="w-8 h-8 text-black"
                 fill="currentColor"
@@ -66,13 +58,6 @@ export default function YoutubeVideo() {
     </div>
   );
 }
-
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.2 }}
-        >
           <div className="bg-primary/90 p-3 rounded-full shadow-lg group-hover:bg-primary transition-colors duration-300">
             <Play className="h-6 w-6 text-primary-foreground fill-current" />
           </div>
