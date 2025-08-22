@@ -20,8 +20,8 @@ const VideoCard = ({ title, description, thumbnail, url, index }: VideoCardProps
     >
       <div className="relative">
         <img
-          src={thumbnail}
-          alt={title}
+          src="https://i.ytimg.com/an_webp/EOJLByHns3s/mqdefault_6s.webp?du=3000&sqp=CLm3oMUG&rs=AOn4CLCSYo8rORWJo7Dc-WCaXF-iuw3hYw"
+          alt="ধনীদের ৬টি গোপন সূত্র | This 6-Step Formula Can Change Your Life | Yar Ali"
           className="w-full h-48 object-cover"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
