@@ -80,11 +80,38 @@ const Hero = () => {
               </a>
             </motion.div>
 
+            {/* Action Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-4 mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <a
+                href="/videos"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
+              >
+                Watch My Videos
+              </a>
+              <a
+                href="/articles"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
+              >
+                Read My Articles
+              </a>
+              <a
+                href="/book-notes"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
+              >
+                Read My Book
+              </a>
+            </motion.div>
+
             {/* Newsletter CTA */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
             >
               <NewsletterForm />
             </motion.div>
