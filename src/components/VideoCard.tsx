@@ -20,9 +20,7 @@ const VideoCard = ({ title, description, thumbnail, url, index }: VideoCardProps
     >
       <div className="relative">
         <img
-          src="https://i.ytimg.com/an_webp/EOJLByHns3s/mqdefault_6s.webp?du=3000&sqp=CLm3oMUG&rs=AOn4CLCSYo8rORWJo7Dc-WCaXF-iuw3hYw"
-          alt="ধনীদের ৬টি গোপন সূত্র | This 6-Step Formula Can Change Your Life | Yar Ali"
-          className="w-full h-48 object-cover"
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EOJLByHns3s?si=W1XyLM-45lpRc-EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
         <motion.div
