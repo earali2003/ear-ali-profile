@@ -88,7 +88,9 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <a
-                href="/videos"
+                href="https://www.youtube.com/@md.yarali"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
               >
                 Watch My Videos
