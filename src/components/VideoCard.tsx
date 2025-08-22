@@ -20,8 +20,53 @@ const VideoCard = ({ title, description, thumbnail, url, index }: VideoCardProps
     >
       <div className="relative">
         <img
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/EOJLByHns3s?si=W1XyLM-45lpRc-EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          import { useState } from "react";
+
+export default function YoutubeVideo() {
+  const [play, setPlay] = useState(false);
+
+  return (
+    <div className="relative w-full max-w-2xl mx-auto aspect-video">
+      {play ? (
+        <iframe
+          className="w-full h-full rounded-2xl"
+          src="https://www.youtube.com/embed/EOJLByHns3s?autoplay=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
+      ) : (
+        <div
+          className="relative w-full h-full cursor-pointer group"
+          onClick={() => setPlay(true)}
+        >
+          {/* Thumbnail */}
+          <img
+            src="https://img.youtube.com/vi/EOJLByHns3s/hqdefault.jpg"
+            alt="Video thumbnail"
+            className="w-full h-full object-cover rounded-2xl"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 rounded-2xl flex items-center justify-center">
+            {/* Play Button */}
+            <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+              <svg
+                className="w-8 h-8 text-black"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M6.5 5.5v9l8-4.5-8-4.5z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
