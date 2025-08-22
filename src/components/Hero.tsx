@@ -49,26 +49,35 @@ const Hero = () => {
               </h1>
             </motion.div>
 
-            {/* About Me */}
+            {/* About Me - Ali Abdaal Style */}
             <motion.div
               className="mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <p className="text-xl lg:text-2xl text-muted-foreground mb-6 leading-relaxed">
-                I'm a doctor, YouTuber, podcaster, entrepreneur, and author.
+              <p className="text-lg lg:text-xl text-muted-foreground mb-6 leading-relaxed">
+                Since 2020, I've been documenting my personal, professional and entrepreneurial journey on YouTube, sharing the books, strategies, ideas and tools that I've found most helpful over the years to help us be more productive, live more intentionally, and build a life we love.
               </p>
-              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                I make <strong className="text-foreground">evidence-based videos</strong> about{" "}
-                <strong className="text-foreground">productivity</strong>,{" "}
-                <strong className="text-foreground">study techniques</strong>, and{" "}
-                <strong className="text-foreground">entrepreneurship</strong> based on{" "}
-                <strong className="text-foreground">scientific research</strong> and{" "}
-                <strong className="text-foreground">my own experience</strong> as a{" "}
-                <strong className="text-foreground">Cambridge-educated doctor</strong> and{" "}
-                <strong className="text-foreground">7-figure entrepreneur</strong>.
+              
+              <p className="text-lg lg:text-xl text-muted-foreground mb-6 leading-relaxed">
+                This seems to have resonated with people, to the point that our online community has grown to over 500k followers on social media (mostly on YouTube and Instagram, although we're also growing on X/Twitter, LinkedIn and TikTok too).
               </p>
+              
+              <p className="text-lg lg:text-xl text-muted-foreground mb-6 leading-relaxed">
+                It's been a pretty wild ride – from starting content creation as a student, to building a personal brand while working, to now focusing full-time on creating content and building a business around what I feel much more passionate about.
+              </p>
+              
+              <p className="text-lg lg:text-xl text-muted-foreground mb-8 leading-relaxed">
+                If you've supported any part of the journey, for any length of time – thank you so much. None of this could've happened without you, and I hope to continue building and sharing useful stuff online, for free, forever 😊
+              </p>
+              
+              <a 
+                href="/about" 
+                className="text-primary hover:text-primary/80 underline underline-offset-4 font-medium text-lg"
+              >
+                Read my full story →
+              </a>
             </motion.div>
 
             {/* Newsletter CTA */}
