@@ -49,16 +49,27 @@ const Hero = () => {
               </h1>
             </motion.div>
 
-            {/* Introduction */}
-            <motion.p
-              className="text-xl lg:text-2xl text-muted-foreground mb-8 leading-relaxed"
+            {/* About Me */}
+            <motion.div
+              className="mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              I help people build productive lives through evidence-based content, 
-              practical advice, and actionable strategies. Welcome to my corner of the internet.
-            </motion.p>
+              <p className="text-xl lg:text-2xl text-muted-foreground mb-6 leading-relaxed">
+                I'm a doctor, YouTuber, podcaster, entrepreneur, and author.
+              </p>
+              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                I make <strong className="text-foreground">evidence-based videos</strong> about{" "}
+                <strong className="text-foreground">productivity</strong>,{" "}
+                <strong className="text-foreground">study techniques</strong>, and{" "}
+                <strong className="text-foreground">entrepreneurship</strong> based on{" "}
+                <strong className="text-foreground">scientific research</strong> and{" "}
+                <strong className="text-foreground">my own experience</strong> as a{" "}
+                <strong className="text-foreground">Cambridge-educated doctor</strong> and{" "}
+                <strong className="text-foreground">7-figure entrepreneur</strong>.
+              </p>
+            </motion.div>
 
             {/* Newsletter CTA */}
             <motion.div
