@@ -29,7 +29,7 @@ const ArticleCard = ({ title, description, thumbnail, url, readTime, index }: Ar
     >
       <div className="relative overflow-hidden">
         <motion.img
-          src="EOJLByHns3s"
+          src={thumbnail}
           alt={title}
           className="w-full h-48 object-cover"
           whileHover={{ scale: 1.05 }}
