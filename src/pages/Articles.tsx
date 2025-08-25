@@ -1,35 +1,48 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
-import article1 from "@/assets/article-1.jpg";
-import article2 from "@/assets/article-2.jpg";
-import article3 from "@/assets/article-3.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
+
+interface Article {
+  id: string;
+  title: string;
+  content: string;
+  image_url: string | null;
+  created_at: string;
+  author_id: string;
+  is_published: boolean;
+}
 
 const Articles = () => {
-  const articles = [
-    {
-      title: "The Ultimate Guide to Time Blocking",
-      description: "Learn how to implement time blocking effectively to boost your productivity and focus. Discover the strategies that top performers use.",
-      thumbnail: article1,
-      url: "#",
-      readTime: "8 min read",
-    },
-    {
-      title: "Building Sustainable Habits That Actually Stick",
-      description: "Why most habits fail and how to build ones that last. Evidence-based strategies for lasting behavior change.",
-      thumbnail: article2,
-      url: "#",
-      readTime: "12 min read",
-    },
-    {
-      title: "The Science of Deep Work in a Distracted World",
-      description: "How to maintain focus and produce high-quality work in an age of constant interruption and digital distraction.",
-      thumbnail: article3,
-      url: "#",
-      readTime: "15 min read",
-    },
-  ];
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('articles')
+          .select('id, title, content, image_url, created_at, author_id, is_published')
+          .eq('is_published', true)
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Error fetching articles:', error);
+        } else {
+          setArticles(data || []);
+        }
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -52,30 +65,55 @@ const Articles = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
-            <ArticleCard
-              key={index}
-              {...article}
-              index={index}
-            />
-          ))}
+          {loading ? (
+            // Loading skeletons
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className="space-y-4">
+                <Skeleton className="h-48 w-full rounded-lg" />
+                <Skeleton className="h-6 w-3/4" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-1/2" />
+              </div>
+            ))
+          ) : articles.length > 0 ? (
+            articles.map((article, index) => (
+              <ArticleCard
+                key={article.id}
+                title={article.title}
+                description={article.content.substring(0, 150) + '...'}
+                thumbnail={article.image_url || '/placeholder.svg'}
+                url={`/articles/${article.id}`}
+                readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
+                index={index}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <h3 className="text-2xl font-semibold mb-4">No Articles Found</h3>
+              <p className="text-muted-foreground">
+                No published articles are available at the moment. Check back later!
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Coming Soon Section */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="bg-card p-8 rounded-2xl shadow-lg border border-border max-w-2xl mx-auto">
-            <h2 className="text-2xl font-semibold mb-4">More Articles Coming Soon</h2>
-            <p className="text-muted-foreground">
-              I'm constantly writing new content. Subscribe to the newsletter to be 
-              the first to know when new articles are published.
-            </p>
-          </div>
-        </motion.div>
+        {!loading && articles.length > 0 && (
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="bg-card p-8 rounded-2xl shadow-lg border border-border max-w-2xl mx-auto">
+              <h2 className="text-2xl font-semibold mb-4">More Articles Coming Soon</h2>
+              <p className="text-muted-foreground">
+                I'm constantly writing new content. Subscribe to the newsletter to be 
+                the first to know when new articles are published.
+              </p>
+            </div>
+          </motion.div>
+        )}
       </main>
 
       <Footer />
