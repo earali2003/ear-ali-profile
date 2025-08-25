@@ -14,39 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      articles: {
-        Row: {
-          author_id: string
-          content: string
-          created_at: string
-          id: string
-          image: string | null
-          published: boolean
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          author_id: string
-          content: string
-          created_at?: string
-          id?: string
-          image?: string | null
-          published?: boolean
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          author_id?: string
-          content?: string
-          created_at?: string
-          id?: string
-          image?: string | null
-          published?: boolean
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
