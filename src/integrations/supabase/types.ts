@@ -26,7 +26,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
-          author_id: string
+          author_id?: string
           content: string
           created_at?: string
           id?: string
