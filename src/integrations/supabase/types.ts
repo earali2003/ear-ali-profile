@@ -20,8 +20,8 @@ export type Database = {
           content: string
           created_at: string
           id: string
-          image: string | null
-          published: boolean
+          image_url: string | null
+          is_published: boolean
           title: string
           updated_at: string
         }
@@ -30,8 +30,8 @@ export type Database = {
           content: string
           created_at?: string
           id?: string
-          image?: string | null
-          published?: boolean
+          image_url?: string | null
+          is_published?: boolean
           title: string
           updated_at?: string
         }
@@ -40,10 +40,22 @@ export type Database = {
           content?: string
           created_at?: string
           id?: string
-          image?: string | null
-          published?: boolean
+          image_url?: string | null
+          is_published?: boolean
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      site_owner: {
+        Row: {
+          owner_id: string
+        }
+        Insert: {
+          owner_id: string
+        }
+        Update: {
+          owner_id?: string
         }
         Relationships: []
       }
@@ -52,7 +64,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_site_owner: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
