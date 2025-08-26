@@ -79,10 +79,10 @@ const Articles = () => {
             articles.map((article, index) => (
               <ArticleCard
                 key={article.id}
+                id={article.id}
                 title={article.title}
                 description={article.content.substring(0, 150) + '...'}
-                thumbnail={article.image_url || '/placeholder.svg'}
-                url={`/articles/${article.id}`}
+                thumbnail={article.image_url}
                 readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
                 index={index}
               />

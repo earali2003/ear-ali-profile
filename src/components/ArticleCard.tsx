@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Clock } from "lucide-react";
+import { ChevronRight, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ArticleCardProps {
+  id: string;
   title: string;
   description: string;
-  thumbnail: string;
-  url: string;
+  thumbnail?: string;
   readTime: string;
   index: number;
 }
@@ -16,7 +17,7 @@ const hoverColors = [
   "hover:bg-gradient-to-br hover:from-secondary/10 hover:to-highlight/20"
 ];
 
-const ArticleCard = ({ title, description, thumbnail, url, readTime, index }: ArticleCardProps) => {
+const ArticleCard = ({ id, title, description, thumbnail, readTime, index }: ArticleCardProps) => {
   const hoverColorClass = hoverColors[index % hoverColors.length];
 
   return (
@@ -29,7 +30,7 @@ const ArticleCard = ({ title, description, thumbnail, url, readTime, index }: Ar
     >
       <div className="relative overflow-hidden">
         <motion.img
-          src="EOJLByHns3s"
+          src={thumbnail || "/placeholder.svg"}
           alt={title}
           className="w-full h-48 object-cover"
           whileHover={{ scale: 1.05 }}
@@ -50,15 +51,13 @@ const ArticleCard = ({ title, description, thumbnail, url, readTime, index }: Ar
         <p className="text-muted-foreground mb-4 line-clamp-3">
           {description}
         </p>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={`/articles/${id}`}
           className="inline-flex items-center gap-2 text-primary hover:text-primary-hover font-medium transition-colors duration-300"
         >
           Read Article
-          <ExternalLink className="h-4 w-4" />
-        </a>
+          <ChevronRight className="h-4 w-4" />
+        </Link>
       </div>
     </motion.div>
   );

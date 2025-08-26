@@ -39,24 +39,24 @@ const Index = () => {
 
   const articles = [
     {
+      id: "demo-1",
       title: "The Ultimate Guide to Time Blocking",
       description: "Learn how to implement time blocking effectively to boost your productivity and focus. Discover the strategies that top performers use.",
       thumbnail: article1,
-      url: "#",
       readTime: "8 min read",
     },
     {
+      id: "demo-2",
       title: "Building Sustainable Habits That Actually Stick",
       description: "Why most habits fail and how to build ones that last. Evidence-based strategies for lasting behavior change.",
       thumbnail: article2,
-      url: "#",
       readTime: "12 min read",
     },
     {
+      id: "demo-3",
       title: "The Science of Deep Work in a Distracted World",
       description: "How to maintain focus and produce high-quality work in an age of constant interruption and digital distraction.",
       thumbnail: article3,
-      url: "#",
       readTime: "15 min read",
     },
   ];
@@ -139,7 +139,11 @@ const Index = () => {
             {articles.map((article, index) => (
               <ArticleCard
                 key={index}
-                {...article}
+                id={article.id}
+                title={article.title}
+                description={article.description}
+                thumbnail={article.thumbnail}
+                readTime={article.readTime}
                 index={index}
               />
             ))}
