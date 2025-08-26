@@ -162,13 +162,12 @@ const ArticleDetail = () => {
             )}
 
             <motion.div
-              className="text-foreground leading-relaxed whitespace-pre-wrap"
+              className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-blockquote:text-muted-foreground prose-code:text-foreground prose-li:text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              {article.content}
-            </motion.div>
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
           </article>
         </motion.div>
       </main>
