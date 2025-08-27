@@ -64,38 +64,105 @@ const Articles = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            // Loading skeletons
-            Array.from({ length: 3 }).map((_, index) => (
-              <div key={index} className="space-y-4">
-                <Skeleton className="h-48 w-full rounded-lg" />
-                <Skeleton className="h-6 w-3/4" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-1/2" />
+        {loading ? (
+          // Loading skeletons for hero section
+          <>
+            <motion.div
+              className="grid md:grid-cols-3 gap-8 mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="space-y-4">
+                  <Skeleton className="h-64 w-full rounded-lg" />
+                  <Skeleton className="h-6 w-3/4" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-1/2" />
+                </div>
+              ))}
+            </motion.div>
+            
+            <div className="border-t border-border pt-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">More Articles</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div key={index} className="space-y-4">
+                    <Skeleton className="h-48 w-full rounded-lg" />
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-1/2" />
+                  </div>
+                ))}
               </div>
-            ))
-          ) : articles.length > 0 ? (
-            articles.map((article, index) => (
-              <ArticleCard
-                key={article.id}
-                id={article.id}
-                title={article.title}
-                description={article.content.substring(0, 150) + '...'}
-                thumbnail={article.image_url}
-                readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
-                index={index}
-              />
-            ))
-          ) : (
-            <div className="col-span-full text-center py-12">
-              <h3 className="text-2xl font-semibold mb-4">No Articles Found</h3>
-              <p className="text-muted-foreground">
-                No published articles are available at the moment. Check back later!
-              </p>
             </div>
-          )}
-        </div>
+          </>
+        ) : articles.length > 0 ? (
+          <>
+            {/* Hero Section - Latest 3 Articles */}
+            <motion.div
+              className="mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="text-3xl font-bold mb-8 text-center text-gradient">
+                Latest Articles
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {articles.slice(0, 3).map((article, index) => (
+                  <motion.div
+                    key={article.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  >
+                    <ArticleCard
+                      id={article.id}
+                      title={article.title}
+                      description={article.content.substring(0, 120) + '...'}
+                      thumbnail={article.image_url}
+                      readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
+                      index={index}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Rest of Articles */}
+            {articles.length > 3 && (
+              <motion.div
+                className="border-t border-border pt-16"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <h2 className="text-3xl font-bold mb-8 text-center">More Articles</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {articles.slice(3).map((article, index) => (
+                    <ArticleCard
+                      key={article.id}
+                      id={article.id}
+                      title={article.title}
+                      description={article.content.substring(0, 150) + '...'}
+                      thumbnail={article.image_url}
+                      readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
+                      index={index + 3}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </>
+        ) : (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-semibold mb-4">No Articles Found</h3>
+            <p className="text-muted-foreground">
+              No published articles are available at the moment. Check back later!
+            </p>
+          </div>
+        )}
 
         {/* Coming Soon Section */}
         {!loading && articles.length > 0 && (
