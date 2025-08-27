@@ -28,11 +28,11 @@ const ArticleCard = ({ id, title, description, thumbnail, readTime, index }: Art
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="relative overflow-hidden h-48">
+      <div className="relative overflow-hidden h-48 bg-muted/10 rounded-t-2xl flex items-center justify-center">
         <motion.img
           src={thumbnail || "/placeholder.svg"}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         />
