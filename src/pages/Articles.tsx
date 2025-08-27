@@ -98,35 +98,67 @@ const Articles = () => {
             </div>
           </>
         ) : articles.length > 0 ? (
-          <motion.div
-            className="mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-center text-gradient">
-              All Articles
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {articles.map((article, index) => (
-                <motion.div
-                  key={article.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                >
-                  <ArticleCard
-                    id={article.id}
-                    title={article.title}
-                    description={article.content.substring(0, 150) + '...'}
-                    thumbnail={article.image_url}
-                    readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
-                    index={index}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          <>
+            {/* Hero Section - Latest 3 Articles */}
+            <motion.div
+              className="mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="text-3xl font-bold mb-8 text-center text-gradient">
+                Latest Articles
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {articles.slice(0, 3).map((article, index) => (
+                  <motion.div
+                    key={article.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  >
+                    <ArticleCard
+                      id={article.id}
+                      title={article.title}
+                      description={article.content.substring(0, 120) + '...'}
+                      thumbnail={article.image_url}
+                      readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
+                      index={index}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* All Articles Section */}
+            <motion.div
+              className="border-t border-border pt-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold mb-8 text-center">All Articles</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {articles.map((article, index) => (
+                  <motion.div
+                    key={article.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+                  >
+                    <ArticleCard
+                      id={article.id}
+                      title={article.title}
+                      description={article.content.substring(0, 150) + '...'}
+                      thumbnail={article.image_url}
+                      readTime={`${Math.ceil(article.content.split(' ').length / 200)} min read`}
+                      index={index}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </>
         ) : (
           <div className="text-center py-12">
             <h3 className="text-2xl font-semibold mb-4">No Articles Found</h3>
