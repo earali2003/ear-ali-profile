@@ -156,7 +156,8 @@ const ArticleDetail = () => {
                 <img
                   src={article.image_url}
                   alt={article.title}
-                  className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
+                  className="w-full h-auto max-w-full object-contain rounded-lg shadow-lg"
+                  style={{ maxHeight: '70vh' }}
                 />
               </motion.div>
             )}
